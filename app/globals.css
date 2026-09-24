@@ -6,6 +6,7 @@
   --light: #f0f7f6;
   --line: #dfe9e9;
   --muted: #64748b;
+  --azul-marinho: #020817;
 }
 * {
   box-sizing: border-box;
@@ -26,8 +27,8 @@ a {
 }
 .topbar {
   height: 36px;
-  background: #020817;
-  color: #cbd5e1;
+  background: var(--cyan);
+  color: var(--azul-marinho);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -220,6 +221,12 @@ h3 {
   font-size: 14px;
   background: #ffffff0d;
 }
+.button-outline img {
+  /* Converte a imagem para a cor verde #0b625b */
+  filter: invert(28%) sepia(85%) saturate(541%) hue-rotate(125deg)
+    brightness(92%) contrast(93%);
+}
+
 .button-ghost:hover {
   background: #ffffff1c;
 }
@@ -450,6 +457,7 @@ h3 {
   gap: 9px;
   margin-top: auto;
   padding-top: 23px;
+  flex-direction: column;
 }
 .card-details,
 .card-whatsapp {
@@ -458,9 +466,25 @@ h3 {
   gap: 5px;
   font-size: 12px;
   font-weight: 800;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  width: 100%;
 }
 .card-details {
   color: var(--teal);
+  border: 1px solid #0b625b;
+  padding: 10px;
+  border-radius: 9px;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+}
+.card-details:hover {
+  background: #0b625b;
+  color: #f5f5f5;
+  transition: 0.5s;
 }
 .card-whatsapp {
   background: #0f766e;
@@ -468,6 +492,21 @@ h3 {
   border-radius: 9px;
   padding: 9px 10px;
 }
+.card-whatsapp:hover,
+.btn-whatsapp:hover {
+  background-color: #f5f5f5;
+  color: #0b625b;
+  transition: 0.5s;
+  border: 1px solid #0b625b;
+}
+.card-whatsapp:hover img,
+.btn-whatsapp:hover img,
+.button-outline:hover img {
+  /* Converte a imagem para a cor verde #0b625b */
+  filter: invert(28%) sepia(85%) saturate(541%) hue-rotate(125deg)
+    brightness(92%) contrast(93%);
+}
+
 .differentials {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -545,44 +584,144 @@ h3 {
   line-height: 1.6;
 }
 .final-cta {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
   max-width: 1152px;
+  min-height: 360px;
   margin: 80px auto;
   padding: 58px;
+
   border-radius: 32px;
-  background: #0f766e;
   color: #fff;
-  position: relative;
-  overflow: hidden;
+
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(5, 87, 82, 0.98) 0%,
+      rgba(15, 118, 110, 0.91) 42%,
+      rgba(15, 118, 110, 0.7) 100%
+    ),
+    url("/cta-bg.webp");
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
-.final-cta:after {
+
+/* Overlay adicional para reforçar o contraste */
+.final-cta::before {
   content: "";
   position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background: linear-gradient(
+    90deg,
+    rgba(2, 44, 42, 0.45),
+    rgba(15, 118, 110, 0.08)
+  );
+}
+
+/* Círculo decorativo */
+.final-cta::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+
   width: 280px;
   height: 280px;
-  border: 35px solid #fff2;
-  border-radius: 50%;
-  right: -90px;
+
   top: -120px;
+  right: -90px;
+
+  border: 35px solid rgba(255, 255, 255, 0.13);
+  border-radius: 50%;
 }
+
+/* Conteúdo acima dos overlays */
 .final-cta > * {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   max-width: 680px;
 }
+
 .final-cta h2 {
-  margin-bottom: 16px;
+  max-width: 680px;
+  margin: 16px 0;
+
+  color: #fff;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.05;
 }
+
+.final-cta p:not(.eyebrow) {
+  max-width: 580px;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.7;
+}
+
 .white-button {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+
+  margin-top: 17px;
+  padding: 15px 22px;
+
+  border-radius: 11px;
   background: #fff;
   color: #0f766e;
-  padding: 15px 22px;
-  border-radius: 11px;
+
   font-weight: 800;
-  margin-top: 17px;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
 }
+.white-button img {
+  filter: invert(28%) sepia(85%) saturate(541%) hue-rotate(125deg)
+    brightness(92%) contrast(93%);
+}
+.white-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px -12px rgba(0, 0, 0, 0.45);
+}
+@media (max-width: 600px) {
+  .final-cta {
+    min-height: 430px;
+    margin: 40px 20px;
+    padding: 34px 24px;
+
+    background-position: 68% center;
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(5, 87, 82, 0.98) 0%,
+        rgba(15, 118, 110, 0.88) 65%,
+        rgba(15, 118, 110, 0.7) 100%
+      ),
+      url("/cta-bg.webp");
+  }
+
+  .final-cta h2 {
+    font-size: 2rem;
+  }
+
+  .final-cta::after {
+    width: 190px;
+    height: 190px;
+    top: -95px;
+    right: -85px;
+    border-width: 24px;
+  }
+
+  .white-button {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
 .floating-whatsapp {
   position: fixed;
   bottom: 24px;
@@ -618,6 +757,8 @@ h3 {
 }
 .footer-brand {
   display: inline-flex;
+  background-color: #f5f5f5;
+  border-radius: 20px;
 }
 .footer-copy {
   color: #94a3b8;

@@ -11,9 +11,9 @@ import {
   Sparkles,
   UsersRound,
 } from "lucide-react";
-import Header from "./Header";
-import Footer from "./Footer";
-import ServiceCard from "./ServiceCard";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import ServiceCard from "./components/ServiceCard";
 import { services, whatsapp } from "@/lib/services";
 import Image from "next/image";
 
@@ -64,7 +64,7 @@ export default function Home() {
             <p className="eyebrow hero-eyebrow">
               Saúde ocupacional para empresas
             </p>
-            <h1>
+            <h1 className="font-display text-5xl font-bold">
               Sua empresa segura.
               <br />
               <span>Sua equipe cuidada.</span>
@@ -180,14 +180,20 @@ export default function Home() {
               </p>
             </div>
             <a
-              className="button-outline"
+              className="button-outline "
               href={whatsapp(
                 "Olá! Preciso de ajuda para identificar os serviços ideais para minha empresa."
               )}
               target="_blank"
               rel="noreferrer"
             >
-              <MessageCircle size={17} /> Não sei por onde começar
+              <Image
+                src="/whatsapp.svg"
+                width={20}
+                height={20}
+                alt="WhatsApp"
+              />{" "}
+              Não sei por onde começar
             </a>
           </div>
           <div className="services-grid">
@@ -220,7 +226,7 @@ export default function Home() {
               contato. Nossa equipe ajuda a organizar o primeiro passo.
             </p>
             <a
-              className="button-primary"
+              className="button-primary btn-whatsapp mt-5"
               href={whatsapp(
                 "Olá! Quero agendar uma conversa inicial para entender as necessidades da minha empresa."
               )}
@@ -244,11 +250,14 @@ export default function Home() {
         </section>
         <section className="final-cta" id="final-cta">
           <p className="eyebrow light">Sua próxima decisão pode ser simples</p>
+
           <h2>Vamos organizar a saúde ocupacional da sua empresa?</h2>
+
           <p>
             Fale com quem entende do assunto e receba uma orientação inicial de
             forma clara e direta.
           </p>
+
           <a
             href={whatsapp(
               "Olá! Quero conversar sobre saúde ocupacional para minha empresa."
@@ -257,12 +266,7 @@ export default function Home() {
             rel="noreferrer"
             className="white-button"
           >
-            <Image
-              src={"/whatsapp.svg"}
-              width={20}
-              height={20}
-              alt="botão do whatsapp"
-            />{" "}
+            <Image src="/whatsapp.svg" width={20} height={20} alt="WhatsApp" />
             Chamar no WhatsApp
           </a>
         </section>
