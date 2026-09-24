@@ -12,7 +12,7 @@ import { notFound } from "next/navigation";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { getService, services, whatsapp } from "@/lib/services";
-
+import Image from "next/image";
 export function generateStaticParams() {
   return services.map(service => ({ slug: service.slug }));
 }
@@ -29,7 +29,21 @@ export default async function ServicePage({
     <div>
       <Header />
       <main>
-        <section className="detail-hero">
+        <section
+          className="detail-hero"
+          style={{
+            backgroundImage: `
+      linear-gradient(
+        90deg,
+        rgba(2, 8, 23, 0.97) 0%,
+        rgba(2, 8, 23, 0.88) 34%,
+        rgba(2, 8, 23, 0.48) 65%,
+        rgba(2, 8, 23, 0.25) 100%
+      ),
+      url("${service.heroImage}")
+    `,
+          }}
+        >
           <div className="detail-glow" />
           <div className="detail-inner">
             <Link href="/#servicos" className="back-link">
@@ -47,7 +61,15 @@ export default async function ServicePage({
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <MessageCircle size={18} /> Falar sobre este serviço
+                    <Image
+                      src="/whatsapp.svg"
+                      width={20}
+                      height={20}
+                      className="whatsapp-icon"
+                      alt=""
+                      aria-hidden="true"
+                    />{" "}
+                    Falar sobre este serviço
                   </a>
                   <a className="button-ghost" href="#proposta">
                     Solicitar proposta <ArrowRight size={17} />
@@ -68,7 +90,7 @@ export default async function ServicePage({
             </div>
           </div>
         </section>
-        <section className="section impact">
+        <section className="section impact" id="diferenciais">
           <div>
             <p className="eyebrow">O impacto para sua empresa</p>
             <h2>Cuidado técnico que apoia decisões melhores.</h2>
@@ -102,11 +124,25 @@ export default async function ServicePage({
             </div>
           </div>
         </section>
-        <section id="proposta" className="section proposal">
-          <div>
+        <section
+          id="proposta"
+          className="section proposal final-cta-2"
+          style={{
+            backgroundImage: `
+      linear-gradient(
+        90deg,
+        rgba(5, 87, 82, 0.97) 0%,
+        rgba(15, 118, 110, 0.88) 42%,
+        rgba(15, 118, 110, 0.52) 100%
+      ),
+      url("${service.ctaImage}")
+    `,
+          }}
+        >
+          <div className="proposal-box">
             <p className="eyebrow">Converse com a equipe</p>
             <h2>Vamos entender o que sua empresa precisa.</h2>
-            <p>
+            <p className="proposal-p">
               Fale pelo WhatsApp para receber uma orientação inicial e uma
               proposta adequada ao seu cenário.
             </p>
@@ -116,21 +152,27 @@ export default async function ServicePage({
             </div>
           </div>
           <div className="proposal-card">
-            <h3>Solicitar proposta</h3>
+            <h3>Chame agora e solicite sua proposta</h3>
             <p>
               Use o botão abaixo e nossa equipe dará continuidade ao
               atendimento.
             </p>
             <a
-              className="button-primary full"
+              className="btn-whatsapp button-primary"
               href={whatsapp(
                 `Olá! Quero solicitar uma proposta para ${service.title}.`
               )}
               target="_blank"
               rel="noreferrer"
             >
-              <MessageCircle size={18} /> Solicitar pelo WhatsApp{" "}
-              <ChevronRight size={18} />
+              <Image
+                src={"/whatsapp.svg"}
+                width={20}
+                height={20}
+                className="brightness-0 invert"
+                alt="botão do whatsapp"
+              />{" "}
+              Solicitar pelo WhatsApp <ChevronRight size={18} />
             </a>
           </div>
         </section>

@@ -7,6 +7,8 @@ export type Service = {
   kicker: string;
   title: string;
   image: string;
+  heroImage: string;
+  ctaImage: string;
   cardDescription: string;
   description: string;
   deliverables: string[];
@@ -34,6 +36,8 @@ export const services: Service[] = [
     kicker: "Conformidade legal",
     title: "Programas e Laudos",
     image: "/images/programas-e-laudos.webp",
+    heroImage: "/images/servicos/hero-programas-laudos.webp",
+    ctaImage: "/images/servicos/cta-programas-laudos.webp",
     cardDescription:
       "Documentação técnica para manter sua operação protegida e em conformidade.",
     description:
@@ -61,6 +65,8 @@ export const services: Service[] = [
     kicker: "Rotina médica",
     title: "Exames Ocupacionais · ASO",
     image: "/images/exames-medicos-ocupacionais.webp",
+    heroImage: "/images/servicos/hero-exames-ocupacionais.webp",
+    ctaImage: "/images/servicos/cta-exames-ocupacionais.webp",
     cardDescription:
       "Agilidade nos exames admissionais, periódicos, demissionais e de retorno.",
     description:
@@ -88,6 +94,9 @@ export const services: Service[] = [
     kicker: "Riscos do ambiente",
     title: "Avaliações Ambientais",
     image: "/images/avaliacao-ocupacional-dos-agentes-ambientais.webp",
+
+    heroImage: "/images/servicos/hero-avaliacoes-ambientais.webp",
+    ctaImage: "/images/servicos/cta-avaliacoes-ambientais.webp",
     cardDescription:
       "Medições técnicas para identificar exposições e orientar ações de prevenção.",
     description:
@@ -115,6 +124,8 @@ export const services: Service[] = [
     kicker: "Diagnóstico complementar",
     title: "Exames Complementares",
     image: "/images/exames-medicos-complementares.webp",
+    heroImage: "/images/servicos/hero-exames-complementares.webp",
+    ctaImage: "/images/servicos/cta-exames-complementares.webp",
     cardDescription:
       "Exames que completam o cuidado ocupacional de acordo com cada função.",
     description:
@@ -142,6 +153,8 @@ export const services: Service[] = [
     kicker: "Capacitação prática",
     title: "Treinamentos de NRs",
     image: "/images/treinamento-de-nrs.webp",
+    heroImage: "/images/servicos/hero-treinamentos-nrs.webp",
+    ctaImage: "/images/servicos/cta-treinamentos-nrs.webp",
     cardDescription:
       "Capacitação que torna a segurança mais presente na rotina da equipe.",
     description:
@@ -169,6 +182,8 @@ export const services: Service[] = [
     kicker: "Ergonomia aplicada",
     title: "Análise Ergonômica do Trabalho",
     image: "/images/analise-ergonomica-do-trabalho.webp",
+    heroImage: "/images/servicos/hero-analise-ergonomica.webp",
+    ctaImage: "/images/servicos/cta-analise-ergonomica.webp",
     cardDescription:
       "Estudo técnico para tornar postos e processos mais saudáveis e eficientes.",
     description:

@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function ServiceCard({ service }: { service: Service }) {
   return (
     <article className="service-card">
-      <div className="flex items-center justify-center mb-10">
+      <div className="flex items-center justify-center mb-10 service-card-img">
         <Image
           src={service.image}
           width={300}
